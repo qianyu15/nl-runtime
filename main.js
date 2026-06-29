@@ -1,37 +1,61 @@
 (() => {
   const TYPE = "text/nl";
 
+  const mapColor = {
+    黒: "black",
+    白: "white",
+    赤: "red",
+    青: "blue",
+    緑: "green",
+  };
+
+  const context = {
+    vars: {},
+  };
+
   function compile(nl) {
     let js = nl;
 
-    // 背景操作
-    js = js.replace(/背景を(黒|白|赤|青|緑)にする/g, (_, c) => {
-      const map = {
-        黒: "black",
-        白: "white",
-        赤: "red",
-        青: "blue",
-        緑: "green",
-      };
-      return `document.body.style.background='${map[c]}';`;
+    // 変数: xを10にする
+    js = js.replace(/(\w+)を(\d+)にする/g, (_, name, value) => {
+      return `context.vars["${name}"] = ${value};`;
     });
 
-    // クリック系
-    js = js.replace(/クリックしたら(.+)/g, (_, action) => {
+    // 背景
+    js = js.replace(/背景を(黒|白|赤|青|緑)にする/g, (_, c) => {
+      return `document.body.style.background='${mapColor[c]}';`;
+    });
+
+    // クリック
+    js = js.replace(/(.+?)をクリックしたら(.+)/g, (_, target, action) => {
       return `
-document.addEventListener("click", () => {
+document.querySelector("${target}")?.addEventListener("click", () => {
   ${compile(action)};
 });
 `;
     });
 
-    // 秒間ループ
+    // 秒ループ
     js = js.replace(/(\d+)秒ごとに(.+)/g, (_, s, action) => {
       return `
 setInterval(() => {
   ${compile(action)};
 }, ${s}000);
 `;
+    });
+
+    // 画面に表示
+    js = js.replace(/「(.+?)」を表示/g, (_, text) => {
+      return `
+const el = document.createElement("div");
+el.textContent = "${text}";
+document.body.appendChild(el);
+`;
+    });
+
+    // consoleログ
+    js = js.replace(/(.+?)を出力/g, (_, text) => {
+      return `console.log(${JSON.stringify(text)});`;
     });
 
     return js;
@@ -44,7 +68,8 @@ setInterval(() => {
     console.log("[NL]", nl);
     console.log("[JS]", js);
 
-    new Function(js)();
+    const fn = new Function("context", js);
+    fn(context);
   }
 
   function init() {
