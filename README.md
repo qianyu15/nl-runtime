@@ -14,7 +14,7 @@ Write JavaScript using Japanese natural language in the browser.
 ## CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/nl-runtime"></script>
+<script src="https://qianyu15.github.io/nl-runtime/dist/nl-runtime"></script>
 ```
 
 ## What is this?
