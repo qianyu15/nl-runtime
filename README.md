@@ -1,7 +1,6 @@
 
 
-# nl-runtime
-![Logo](logo.svg)
+<center><img src="logo.svg"><h1>NL Runtime</h1></center>
 
 **Natural Language JavaScript Runtime for the Browser**
 
