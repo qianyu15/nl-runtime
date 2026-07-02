@@ -1,6 +1,56 @@
 
 
-<div><img src="logo.svg" ><h1>NL Runtime</h1></div>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Apple-like subtle gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0f14"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <!-- ultra subtle highlight -->
+    <radialGradient id="highlight" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Apple-like blue/purple accent -->
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A84FF"/>
+      <stop offset="100%" stop-color="#BF5AF2"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- base -->
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+
+  <!-- highlight overlay -->
+  <rect width="512" height="512" rx="120" fill="url(#highlight)"/>
+
+  <!-- core transformation arrow (Apple minimal style) -->
+  <path d="M160 270 H300"
+        stroke="url(#accent)"
+        stroke-width="16"
+        stroke-linecap="round"/>
+
+  <path d="M300 230 L340 270 L300 310"
+        fill="none"
+        stroke="url(#accent)"
+        stroke-width="16"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- minimal runtime indicator -->
+  <circle cx="352" cy="190" r="5" fill="#0A84FF">
+    <animate attributeName="opacity"
+             values="1;0.3;1"
+             dur="1.6s"
+             repeatCount="indefinite"/>
+  </circle>
+
+</svg>
 
 **Natural Language JavaScript Runtime for the Browser**
 
