@@ -1,6 +1,6 @@
 
 
-<center><img src="logo.svg"><h1>NL Runtime</h1></center>
+<div><img src="logo.svg" width="40"><h1>NL Runtime</h1></div>
 
 **Natural Language JavaScript Runtime for the Browser**
 
