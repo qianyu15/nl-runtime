@@ -1,90 +1,79 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 
   <defs>
-    <!-- background gradient -->
-    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#05060a"/>
+    <!-- background gradient (iOS-like depth) -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <!-- glass highlight -->
+    <radialGradient id="glass" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- neon gradient -->
-    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="50%" stop-color="#3b82f6"/>
+    <!-- neon accent -->
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
 
+    <!-- shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+
     <!-- glow -->
     <filter id="glow">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feGaussianBlur stdDeviation="4" result="b"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="b"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-
-    <!-- soft shadow -->
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
-    </filter>
   </defs>
 
-  <!-- background -->
-  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- rounded iOS tile -->
+  <rect x="32" y="32" width="448" height="448" rx="110"
+        fill="url(#bg)" filter="url(#shadow)"/>
 
-  <!-- outer ring -->
-  <circle cx="256" cy="256" r="180"
-          fill="none"
-          stroke="url(#neon)"
-          stroke-width="6"
-          opacity="0.7"
-          filter="url(#glow)"/>
+  <!-- glass overlay -->
+  <rect x="32" y="32" width="448" height="448" rx="110"
+        fill="url(#glass)"/>
 
-  <!-- inner core -->
-  <circle cx="256" cy="256" r="120"
-          fill="#0b1220"
-          stroke="#1f2937"
-          stroke-width="2"
-          filter="url(#shadow)"/>
-
-  <!-- transformation arrow -->
-  <path d="M160 260 H240"
-        stroke="url(#neon)"
-        stroke-width="10"
+  <!-- central symbol: transform arrow -->
+  <path d="M170 270 H290"
+        stroke="url(#accent)"
+        stroke-width="18"
         stroke-linecap="round"
         filter="url(#glow)"/>
 
-  <path d="M240 220 L290 260 L240 300"
+  <path d="M290 220 L340 270 L290 320"
         fill="none"
-        stroke="url(#neon)"
-        stroke-width="10"
+        stroke="url(#accent)"
+        stroke-width="18"
         stroke-linecap="round"
         stroke-linejoin="round"
         filter="url(#glow)"/>
 
-  <!-- code brackets -->
-  <text x="135" y="350"
-        font-size="64"
-        fill="#94a3b8"
-        font-family="monospace"
-        opacity="0.9">{ }</text>
+  <!-- subtle code hint (very minimal iOS style) -->
+  <text x="256" y="370"
+        text-anchor="middle"
+        font-size="54"
+        font-family="SF Pro Display, system-ui, sans-serif"
+        fill="#cbd5e1"
+        opacity="0.55">
+    { }
+  </text>
 
-  <!-- runtime dot -->
-  <circle cx="330" cy="180" r="6" fill="#22d3ee">
+  <!-- small runtime pulse dot -->
+  <circle cx="360" cy="160" r="7" fill="#38bdf8">
     <animate attributeName="opacity"
-             values="1;0.2;1"
-             dur="1.2s"
+             values="1;0.25;1"
+             dur="1.4s"
              repeatCount="indefinite"/>
   </circle>
-
-  <!-- label -->
-  <text x="256" y="410"
-        text-anchor="middle"
-        font-size="28"
-        fill="#e5e7eb"
-        font-family="monospace"
-        letter-spacing="2">
-    nl-runtime
-  </text>
 
 </svg>
