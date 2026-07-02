@@ -1,0 +1,90 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- background gradient -->
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#05060a"/>
+    </radialGradient>
+
+    <!-- neon gradient -->
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <!-- glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- soft shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+
+  <!-- outer ring -->
+  <circle cx="256" cy="256" r="180"
+          fill="none"
+          stroke="url(#neon)"
+          stroke-width="6"
+          opacity="0.7"
+          filter="url(#glow)"/>
+
+  <!-- inner core -->
+  <circle cx="256" cy="256" r="120"
+          fill="#0b1220"
+          stroke="#1f2937"
+          stroke-width="2"
+          filter="url(#shadow)"/>
+
+  <!-- transformation arrow -->
+  <path d="M160 260 H240"
+        stroke="url(#neon)"
+        stroke-width="10"
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+
+  <path d="M240 220 L290 260 L240 300"
+        fill="none"
+        stroke="url(#neon)"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        filter="url(#glow)"/>
+
+  <!-- code brackets -->
+  <text x="135" y="350"
+        font-size="64"
+        fill="#94a3b8"
+        font-family="monospace"
+        opacity="0.9">{ }</text>
+
+  <!-- runtime dot -->
+  <circle cx="330" cy="180" r="6" fill="#22d3ee">
+    <animate attributeName="opacity"
+             values="1;0.2;1"
+             dur="1.2s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <!-- label -->
+  <text x="256" y="410"
+        text-anchor="middle"
+        font-size="28"
+        fill="#e5e7eb"
+        font-family="monospace"
+        letter-spacing="2">
+    nl-runtime
+  </text>
+
+</svg>
