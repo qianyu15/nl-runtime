@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NL Runtime</title>
+  <meta name="description" content="Natural Language JavaScript Runtime for the Browser">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      color: #cbd5e1;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #1d4ed8;
+    }
+
+    .secondary {
+      border: 1px solid #334155;
+      color: white;
+    }
+
+    .secondary:hover {
+      background: #1e293b;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+
+    pre {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    .cards {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: #111827;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #1e293b;
+    }
+
+    footer {
+      padding: 50px 0;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+<header class="container">
+  <div class="logo">NL Runtime</div>
+  <p class="tagline">
+    Natural Language JavaScript Runtime for the Browser
+  </p>
+
+  <div class="buttons">
+    <a href="https://github.com/qianyu15/nl-runtime" class="btn primary">
+      GitHub
+    </a>
+
+    <a href="#example" class="btn secondary">
+      Get Started
+    </a>
+  </div>
+</header>
+
+<section class="container">
+  <h2>What is NL Runtime?</h2>
+
+  <p>
+    NL Runtime is an experimental browser runtime that allows developers
+    to write simple UI interactions using Japanese natural language.
+  </p>
+
+  <p>
+    Instead of writing JavaScript event handlers directly,
+    you can describe behavior in plain Japanese sentences.
+  </p>
+</section>
+
+<section class="container" id="example">
+  <h2>Example</h2>
+
+  <pre><code>&lt;script src="https://qianyu15.github.io/nl-runtime/main.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/nl"&gt;
+クリックしたら背景を赤にする
+&lt;/script&gt;
+
+&lt;script type="text/nl"&gt;
+ボタンを押したらアラートを表示する
+&lt;/script&gt;
+</code></pre>
+</section>
+
+<section class="container">
+  <h2>Features</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Natural Language</h3>
+      <p>Write browser interactions in Japanese sentences.</p>
+    </div>
+
+    <div class="card">
+      <h3>Browser Only</h3>
+      <p>No server and no AI model required.</p>
+    </div>
+
+    <div class="card">
+      <h3>Experimental</h3>
+      <p>Built for learning and rapid prototyping.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Install</h2>
+
+  <pre><code>&lt;script src="https://qianyu15.github.io/nl-runtime/main.js"&gt;&lt;/script&gt;</code></pre>
+</section>
+
+<section class="container">
+  <h2>Status</h2>
+
+  <p>
+    This project is experimental and under active development.
+    APIs and supported language patterns may change without notice.
+  </p>
+</section>
+
+<footer>
+  © 2026 NL Runtime • Created by Qianyu Yang
+</footer>
+
+</body>
+</html>
