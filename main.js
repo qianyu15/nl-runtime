@@ -57,6 +57,14 @@ document.body.appendChild(el);
     js = js.replace(/(.+?)を出力/g, (_, text) => {
       return `console.log(${JSON.stringify(text)});`;
     });
+    // 条件分岐: もしAならBする
+js = js.replace(/もし(.+?)なら(.+)/g, (_, cond, action) => {
+  return `
+if (${compileCondition(cond)}) {
+  ${compile(action)};
+}
+`;
+});
 
     return js;
   }
