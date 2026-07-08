@@ -7,6 +7,7 @@
     赤: "red",
     青: "blue",
     緑: "green",
+    黄: "yellow"
   };
 
   const context = {
