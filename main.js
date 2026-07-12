@@ -14,8 +14,8 @@
     vars: {}
   };
 
+
   function compileCondition(cond) {
-    // 例: xが10
     const match = cond.match(/(.+?)が(\d+)$/);
 
     if (match) {
@@ -25,13 +25,13 @@
       return `context.vars["${name}"] == ${value}`;
     }
 
-    // 未対応条件はfalse
     return "false";
   }
 
 
   function compile(nl) {
     let js = nl.trim();
+
 
     // 変数: xを10にする
     js = js.replace(
@@ -51,7 +51,20 @@
     );
 
 
-    // クリックイベント
+    // クリックしたら〜（ページ全体）
+    js = js.replace(
+      /^クリックしたら(.+)/,
+      (_, action) => {
+        return `
+document.addEventListener("click", () => {
+  ${compile(action)}
+});
+`;
+      }
+    );
+
+
+    // 要素をクリックしたら〜
     js = js.replace(
       /(.+?)をクリックしたら(.+)/,
       (_, target, action) => {
@@ -122,10 +135,13 @@ if (${compileCondition(cond)}) {
   function run(script) {
     const nl = script.textContent.trim();
 
+    if (!nl) return;
+
     const js = compile(nl);
 
     console.log("[NL]", nl);
     console.log("[JS]", js);
+
 
     try {
       const fn = new Function(
@@ -136,7 +152,10 @@ if (${compileCondition(cond)}) {
       fn(context);
 
     } catch (e) {
-      console.error("NL Runtime Error:", e);
+      console.error(
+        "NL Runtime Error:",
+        e
+      );
     }
   }
 
