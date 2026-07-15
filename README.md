@@ -154,3 +154,9 @@ human language and programming languages.
 Experimental project.
 
 The syntax, parser rules, and supported expressions may change as the project evolves.
+## Author
+
+Created by **Qianyu Yang** (@qianyu15)
+
+- GitHub: https://github.com/qianyu15
+- Website: https://qianyu15.github.io
